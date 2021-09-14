@@ -99,7 +99,7 @@ iDSBannotation: parameters to detemine the number of donor and annotation of don
 
 
 # Output
-The software will generate two seperate files for large insertion events, including single donor, and multiple donors.
+The software will generate two seperate files for large insertion events, including single donor, and multiple donors. The SampleID_final.Single.txt contains insertion events that only have one donor.  SampleID_final.Multiple.txt contains quite complex insertion events, including 2 donors, 3 donors, 4 donors, 1orMore donors, 2orMore donors, 3orMore donors, and unaligned donors. 
 
 | column | explaination |
 | ------| ------|
@@ -108,18 +108,24 @@ The software will generate two seperate files for large insertion events, includ
 | 3rd | Sample ID |
 | 4th | Whole sequence |
 | 5th | Inserted Sequence |
-| 6th | left signal of a stripe in Matrix A |
-| 7th | right signal of a stripe in Matrix A |
-| 8th | signal fold change of a stripe in Matrix A |
-| 9th | P value of a stripe in Matrix A |
-| 10th | left signal of a stripe in Matrix B |
-| 11th | right signal of a stripe in Matrix B |
-| 12th | signal fold change of a stripe in Matrix B |
-| 13th | P value of a stripe in Matrix B |
-| 14th | P value for a differential stripe |
-| 15th | direction of a stripe, could be left or right |
-| 16th | end of a stripe |
+| 6th | Insertion Size (bp)|
+| 7th | Donor Number |
+| 8th | Representive Read Identity |
+| 9th | Total Read Count |
+| 10th | Representive Read Quality |
+| 11th | Donor  Chromosome |
+| 12th | Donor Start |
+| 13th | Donor End |
+| 14th | Donor Strand |
+| 15th | Donor Feature |
+| 16th | Distance To Feature |
+| 17th | Distance Description |
+| 18th | Alternative Feature |
+| 19th | Junction sequence at 5' |
+| 20th | Junction sequence at 3'|
+| 21th | GapOfReads(3kb) |
 
+We ranked all the reads for each insertion events based on the read quality, donor identity, and read count support for each deduplication step. The representative read is the most reliable read that represented the large insertion event. 
 
 
 For more detail information, please feel free to contact: xin.wang@childrens.harvard.edu
