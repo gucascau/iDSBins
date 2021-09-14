@@ -34,7 +34,6 @@ Perl is used to run the scripts. The following softwares are also required:
 
 # Usage
 
-
 Usage: sh Final_intergrated.sh -a Sample ID -b Work Directory -c Forward Index -d Reverse Index -f forward reads -r reverse reads -p Software installed Directory
 
 Request Parameters:
@@ -45,7 +44,6 @@ Request Parameters:
 	-f forward reads (Example: SampleID_L001_R1_001.fastq)
 	-r reverse reads (Example: SampleID_L001_R2_001.fastq)
 	-p Software installed Path, Attation: This required to install DSBins, BLAST, PEAR, Bedtools in the same folder (Default:)
-
 
 Optional Parameters:
 
