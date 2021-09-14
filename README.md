@@ -7,10 +7,10 @@ This repository contain a set of simple scripts that carry out the key anaylses 
 
 iDSBins consists of four parts: iDSBquality, iDSBdetection, iDSBdeduplication and iDSBannotation.
 
-	-- iDSBquality is used to eliminate the error index reads, phix reads and customed low quality reads.
-	-- iDSBdetection is used to detect the reads that contained large insertion events.
-	-- iDSBdeduplication is used to eliminate the duplicated large insertion events that caused by sequence errors, identify the representive read sequence and quality, and measure the read counts of final insertion events.
-	-- iDSBannotation is used to annoate the number of donors, the genetic feature of donors.
+1. iDSBquality is used to eliminate the error index reads, phix reads and customed low quality reads.
+2. iDSBdetection is used to detect the reads that contained large insertion events.
+3. iDSBdeduplication is used to eliminate the duplicated large insertion events that caused by sequence errors, identify the representive read sequence and quality, and measure the read counts of final insertion events.
+4. iDSBannotation is used to annoate the number of donors, the genetic feature of donors.
 
 # Availability 
 1. Detect the large and complex DNA insertions at DSB sites.
