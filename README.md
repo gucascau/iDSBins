@@ -125,7 +125,6 @@ The software will generate two seperate files for large insertion events, includ
 | 20th | Junction sequence at 3'|
 | 21th | GapOfReads(3kb) |
 
-We ranked all the reads for each insertion events based on the read quality, donor identity, and read count support for each deduplication step. The representative read is the most reliable read that represented the large insertion event. 
-
+For each insertion event, we selected the most reliable representative read that showed the highest read quality, highest donor identity and the highest read count support. 
 
 For more detail information, please feel free to contact: xin.wang@childrens.harvard.edu
