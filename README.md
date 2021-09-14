@@ -53,18 +53,18 @@ Optional Parameters -- overall requirements:
 	-ga Genome annotation (Default BED file format)
 
 Optional Parameters of each step:
-iDSBquality: Optional paramter for the quality control of reads:
+iDSBquality - Optional paramter for the quality control of reads:
 	-mq The minimum quality requirment of MAT region (Default: 25)
 	-iq The minimum quality requirment of Inserted region (Default: 15)
 
-iDSBdetection: Define the MATA information:
+iDSBdetection - Define the MATA information:
 	-il minimum length of large insertion (Default 10bp)
 	-ms Total size of whole MATA region (Default 90)
 	-mc Mapped chromosme of MATA reference position (Default chrIII)
 	-ms Mapped start site of MATA reference position (Default 294300)
 	-me Mapped end site of MATA reference position (Default 294500)
 
-iDSBdeduplication: parameters for the duplicated reads:
+iDSBdeduplication - parameters for the duplicated reads:
 
 	Parameters for first cuting-edge deduplication:
 	-cs cut-off of upstream and downstream, the cut-off we collected mata 11bp and inserted 19bp sequences for forward and reverse reads(default 30bp, 11+19bp)
