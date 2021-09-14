@@ -43,7 +43,7 @@ Request Parameters:
 	-d Index of reverse reads (Example: ACC)
 	-f forward reads (Example: SampleID_L001_R1_001.fastq)
 	-r reverse reads (Example: SampleID_L001_R2_001.fastq)
-	-p Software installed Path, Attation: This required to install DSBins, BLAST, PEAR, Bedtools in the same folder (Default:)
+	-p Software installed Path, Attation: This required to install DSBins, BLAST, PEAR, Bedtools in the same folder (Default:"")
 
 Optional Parameters:
 
