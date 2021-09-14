@@ -96,4 +96,30 @@ iDSBannotation: parameters to detemine the number of donor and annotation of don
 	-h help
 
 ```
+
+
+# Output
+The software will generate two seperate files for large insertion events, including single donor, and multiple donors.
+
+| column | explaination |
+| ------| ------|
+| 1st | Case ID |
+| 2nd | Representative Read |
+| 3rd | Sample ID |
+| 4th | Whole sequence |
+| 5th | Inserted Sequence |
+| 6th | left signal of a stripe in Matrix A |
+| 7th | right signal of a stripe in Matrix A |
+| 8th | signal fold change of a stripe in Matrix A |
+| 9th | P value of a stripe in Matrix A |
+| 10th | left signal of a stripe in Matrix B |
+| 11th | right signal of a stripe in Matrix B |
+| 12th | signal fold change of a stripe in Matrix B |
+| 13th | P value of a stripe in Matrix B |
+| 14th | P value for a differential stripe |
+| 15th | direction of a stripe, could be left or right |
+| 16th | end of a stripe |
+
+
+
 For more detail information, please feel free to contact: xin.wang@childrens.harvard.edu
