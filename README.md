@@ -123,7 +123,7 @@ The software will generate two seperate files for large insertion events, includ
 | 18th | Alternative Feature |
 | 19th | Junction sequence at 5' |
 | 20th | Junction sequence at 3'|
-| 21th | GapOfReads(3kb) |
+| 21th | Gap Of Reads Status(3kb) |
 
 For each insertion event, we selected the most reliable representative read that showed the highest read quality, highest donor identity and the highest read count support. 
 
