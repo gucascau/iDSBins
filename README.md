@@ -3,14 +3,14 @@ High-throughput identification of large and complex DNA insertions at DNA double
 
 Insertions of mobile elements, mitochondrial DNA and fragements of nuclear chromosomes at DNA double-strand breaks(DSB) threaten genome instability. This genomic instability can rebalance the effects of specific knockout, i.e. DNA2 mutants.
 
-This repository contain a set of simple scripts that carry out the key anaylses for identification of large and complex insertions, as well as small insertion and deletions at DNA double strand breaks in Yeast genome. These toolkits also contain scripts to define the microhomologies and small insertion/deletions at junction sequence for large insertion events, functionally annotate the insertion events, calculate the inserted coverage of rDNA, LTR, evaluate the relationship between large insertions and Rloop, ARS, hotspots, G4, Rereplication ect.  Similar strategies can also apply to the detection of insertion events at double strand break in human genome.
-
 iDSBins consists of four parts: iDSBquality, iDSBdetection, iDSBdeduplication and iDSBannotation.
 
-1. iDSBquality is used to eliminate the error index reads, phix reads and customed low quality reads.
-2. iDSBdetection is used to detect the reads that contained large insertion events.
-3. iDSBdeduplication is used to eliminate the duplicated large insertion events that caused by sequence errors, identify the representive read sequence and quality, and measure the read counts of final insertion events.
-4. iDSBannotation is used to annoate the number of donors, the genetic feature of donors.
+	1. iDSBquality is used to eliminate the error index reads, phix reads and customed low quality reads.
+	2. iDSBdetection is used to detect the reads that contained large insertion events.
+	3. iDSBdeduplication is used to eliminate the duplicated large insertion events that caused by sequence errors, identify the representive read sequence and quality, and measure the read counts of final insertion events.
+	4. iDSBannotation is used to annoate the number of donors, the genetic feature of donors.
+	
+This repository contain a set of simple scripts that carry out the key anaylses for identification of large and complex insertions, as well as small insertion and deletions at DNA double strand breaks in Yeast genome. These toolkits also contain scripts to define the microhomologies and small insertion/deletions at junction sequence for large insertion events, functionally annotate the insertion events, calculate the inserted coverage of rDNA, LTR, evaluate the relationship between large insertions and Rloop, ARS, hotspots, G4, Rereplication ect.  Similar strategies can also apply to the detection of insertion events at double strand break in human genome.
 
 # Availability 
 1. Detect the large and complex DNA insertions at DSB sites.
