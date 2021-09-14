@@ -27,15 +27,13 @@ Perl is used to run the scripts. The following softwares are also required:
 
 
 # Usage
-
-Usage: sh Final_intergrated.sh -a Sample ID -b Work Directory -c Forward Index -d Reverse Index -f forward reads -r reverse reads -p Software installed Directory
-
 DSBin consists of four parts: iDSBquality, iDSBdetection, iDSBdeduplication and iDSBannotation.
 	 -- iDSBquality is used to eliminate the error index reads, phix reads and customed low quality reads.
 	 -- iDSBdetection is used to detect the reads that contained large insertion events.
 	 -- iDSBdeduplication is used to eliminate the duplicated large insertion events that caused by sequence errors, identify the representive read sequence and quality, and measure the read counts of final insertion events.
 	 -- iDSBannotation is used to annoate the number of donors, the genetic feature of donors.
 
+Usage: sh Final_intergrated.sh -a Sample ID -b Work Directory -c Forward Index -d Reverse Index -f forward reads -r reverse reads -p Software installed Directory
 
 Request Parameters:
 	-a Sample Id (Example: yYY398-B_S10)
