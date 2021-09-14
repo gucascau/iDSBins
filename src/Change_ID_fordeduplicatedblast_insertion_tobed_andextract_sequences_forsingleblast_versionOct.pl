@@ -2,9 +2,6 @@
 #author:wangxin
 ### #### caluculate the side effect on the final associated genes results
 ### Here is to calculate the sample size effect
-
-
-
 use strict;
 use warnings;
 #use Statistics::Test::WilcoxonRankSum;
