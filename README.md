@@ -34,6 +34,12 @@ Perl is used to run the scripts. The following softwares are also required:
 
 . bedtools (https://bedtools.readthedocs.io/en/latest/)
 
+# Install
+
+```
+    cd ~
+    git clone https://github.com/gucascau/iDSBins.git
+```   
 
 # Usage
 ```
