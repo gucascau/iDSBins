@@ -19,6 +19,8 @@ iDSBins consists of four parts: iDSBquality, iDSBdetection, iDSBdeduplication an
 4. Detect the microhomologies and junctions for large insertion events.
 5. Functionally annotate the inserted elements.
 6. Identify the hotspots of large insertions.
+7. Requirements
+
 
 # Dependencies
 
