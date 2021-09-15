@@ -720,11 +720,11 @@ cp ${SampleID}_final.finalinsertion.highquality.One.sorted.txt ${SampleID}_final
 # for i in *.txt; do sed 's/AssemblyInsertion/NO/g' -i  ${SampleID}; done;
 
 
-mkdir UpdatedVersion_0913
+mkdir ${in}/${SampleID}/FinalLargeInsertion
 
 
- perl -ne '{chomp; $n++; my @array=split/\t/,$_; if ($array[7] eq "Unknown"){$array[6] = "1orMore"; $array[0]="U$n"; my $string=join "\t",@array; print "$string\n"}else{$array[0]=~s/Tw/M/g; $array[0]=~s/Th/M/g; $array[0] =~s/Si/M/g;$array[0] =~s/E/M/g;my $string=join "\t",@array; print "$string\n"}}' ${SampleID}_final.Multiple.txt >UpdatedVersion_0913/${SampleID}_final.Multiple.txt
- perl -ne '{chomp; $n++; my @array=split/\t/,$_; if($n==1){print "$_\n"}else{$m=$n-1;$array[0]="S$m";my $string=join "\t",@array;print "$string\n"}}' ${SampleID}_final.Single.txt >UpdatedVersion_0913/${SampleID}_final.Single.txt
+ perl -ne '{chomp; $n++; my @array=split/\t/,$_; if ($array[7] eq "Unknown"){$array[6] = "1orMore"; $array[0]="U$n"; my $string=join "\t",@array; print "$string\n"}else{$array[0]=~s/Tw/M/g; $array[0]=~s/Th/M/g; $array[0] =~s/Si/M/g;$array[0] =~s/E/M/g;my $string=join "\t",@array; print "$string\n"}}' ${SampleID}_final.Multiple.txt >${in}/${SampleID}/FinalLargeInsertion/${SampleID}_final.Multiple.txt
+ perl -ne '{chomp; $n++; my @array=split/\t/,$_; if($n==1){print "$_\n"}else{$m=$n-1;$array[0]="S$m";my $string=join "\t",@array;print "$string\n"}}' ${SampleID}_final.Single.txt >${in}/${SampleID}/FinalLargeInsertion/${SampleID}_final.Single.txt
 #
 
 
