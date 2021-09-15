@@ -442,7 +442,7 @@ perl ${srcDir}/Identical_ReadCaculation_v3.pl -g ${in}/${SampleID}/Detection/${S
 
 
 ### 1.1  we combined the two junction sequences of all detected reads
-perl ${srcDir}//Cut_twoedge_sequences_forunassembled_v2.pl  -f ${in}/${SampleID}/QualityControl/${SampleID}_QC.highquality.R1.fastq -r ${in}/${SampleID}/QualityControl/${SampleID}_QC.highquality.R2.fastq -i ${SampleID}_detected_combined.highqual2.txt -o ${SampleID}_detected_cut60.fasta -u ${Cutsize} -t ${CutstartF} -e ${CutstartR}
+perl ${srcDir}/Cut_twoedge_sequences_forunassembled_v2.pl  -f ${in}/${SampleID}/QualityControl/${SampleID}_QC.highquality.R1.fastq -r ${in}/${SampleID}/QualityControl/${SampleID}_QC.highquality.R2.fastq -i ${SampleID}_detected_combined.highqual2.txt -o ${SampleID}_detected_cut60.fasta -u ${Cutsize} -t ${CutstartF} -e ${CutstartR}
 
 
 #### 1.2 Blast against itself
