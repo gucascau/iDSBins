@@ -13,10 +13,10 @@ iDSBins consists of four parts: iDSBquality, iDSBdetection, iDSBdeduplication an
 This repository contain a set of simple scripts that carry out the key anaylses for identification of large and complex insertions, as well as small insertion and deletions at DNA double strand breaks in Yeast genome. These toolkits also contain scripts to define the microhomologies and small insertion/deletions at junction sequence for large insertion events, functionally annotate the insertion events, calculate the inserted coverage of rDNA, LTR, evaluate the relationship between large insertions and Rloop, ARS, hotspots, G4, Rereplication ect.  Similar strategies can also apply to the detection of insertion events at double strand break in human genome.
 
 # Availability 
-1. Detect the large and complex large DNA insertions at DSB sites.
-2. Perform the deduplication and calculate the coverage of each insertion events.
-3. Detect the microhomologies and junctions for large insertion events.
-4. Functionally annotate the inserted elements.
+1. Detect the large and complex large DNA insertion evens at DSB sites.
+2. Measure the read counts and qualities of unique large insertion events.
+3. Determine the donor number of large insertion events.
+4. Functionally annotate the inserted donors.
 5. Identify the hotspots of large insertions.
 
 
