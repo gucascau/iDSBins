@@ -1,5 +1,5 @@
 # iDSBins
-High-throughput identification of large and complex DNA insertions at DNA double strand breaks.
+**High-throughput identification of large and complex DNA insertions at DNA double strand breaks.**
 
 Insertions of mobile elements, mitochondrial DNA and fragments of nuclear chromosomes at DNA double-strand breaks sites (DSBs) threaten genome integrity and are common in cancer. Despite extensive efforts, our knowledge of these insertions still remains unknown. These large insertions were previously profiled along with quantitatively Sanger sequencing, but have not yet been combined with the massively parallel approaches to tackle the complexity of insertion events. Here, we introduced a high-throughput sequencing Break-Ins (DNA double strand break insertion sequencing), a method that can detect large and complicated insertion/deletion events at DNA double strand break sites. In parallel with the novel technology, we also developed a simplified, standardized and fully automated data analysis software toolkit, iDSBins, which enables routine scoring and interpretation of large-scale insertions at targeted double strand break site. 
 
