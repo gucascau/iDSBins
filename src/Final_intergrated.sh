@@ -723,37 +723,8 @@ cp ${SampleID}_final.finalinsertion.highquality.One.sorted.txt ${SampleID}_final
 mkdir ${in}/${SampleID}/FinalLargeInsertion
 
 
- perl -ne '{chomp; $n++; my @array=split/\t/,$_; if ($array[7] eq "Unknown"){$array[6] = "1orMore"; $array[0]="U$n"; my $string=join "\t",@array; print "$string\n"}else{$array[0]=~s/Tw/M/g; $array[0]=~s/Th/M/g; $array[0] =~s/Si/M/g;$array[0] =~s/E/M/g;my $string=join "\t",@array; print "$string\n"}}' ${SampleID}_final.Multiple.txt >${in}/${SampleID}/FinalLargeInsertion/${SampleID}_final.Multiple.txt
- perl -ne '{chomp; $n++; my @array=split/\t/,$_; if($n==1){print "$_\n"}else{$m=$n-1;$array[0]="S$m";my $string=join "\t",@array;print "$string\n"}}' ${SampleID}_final.Single.txt >${in}/${SampleID}/FinalLargeInsertion/${SampleID}_final.Single.txt
-#
-
-
-#
-#
-# perl -ne '{chomp; my @array=(split/\t/,$_); my ($ty,$num)=@array[0,6]; if ($num== "1" || $num eq "1orMore" ||$ty =~/\.A/ || $ty =~/\.B/ ||$ty =~/\.C/ ||$ty =~/\.D/ ){print "$_\n"}else{my $string= join "\t", @array[0..16],"NO",@array[17..18]; print "$string\n"}}' ${SampleID}_final.finalinsertion.txt >${SampleID}_final.finalinsertion2.txt
-#
-#
-#
-#
-#
-# perl -ne '{chomp; my ($Rcount,$quality)=(split/\t/,$_)[8,9];  next if ($Rcount<=2 && $quality<25); print "$_\n"}'  ${SampleID}_final.finalinsertion.txt >${SampleID}_final_highquality.finalinsertion.txt
-
-
-
-#double check
-sort -k 7nr ../../DeDuplication/DeduplicationFirst/${SampleID}_detected_combined.highqual2.txt |head
-# perl -ne '{chomp; my ($Rcount,$quality)=(split/\t/,$_)[8,9]; next unless ($Rcount>1 && $quality>=25 || $Rcount eq "TotalCoverage"); print "$_\n"}' ${SampleID}_final_single.Ftable|sort -k 11,11V -k 12,12n >${SampleID}_finalhighquality_one.txt
-# perl -ne '{chomp; my ($Rcount,$quality)=(split/\t/,$_)[8,9]; next unless ($Rcount>1 && $quality>=25 || $Rcount eq "TotalCoverage"); print "$_\n"}' ${SampleID}_final_two.Ftable|sort -k 11,11V -k 12,12n >${SampleID}_finalhighquality_two.txt
-# perl -ne '{chomp; my ($Rcount,$quality)=(split/\t/,$_)[8,9]; next unless ($Rcount>1 && $quality>=25|| $Rcount eq "TotalCoverage"); print "$_\n"}' ${SampleID}_final_three.Ftable|sort -k 11,11V -k 12,12n >${SampleID}_finalhighquality_three.txt
-# perl -ne '{chomp; my ($Rcount,$quality)=(split/\t/,$_)[8,9]; next unless ($Rcount>1 && $quality>=25|| $Rcount eq "TotalCoverage"); print "$_\n"}' ${SampleID}_final_four.Ftable|sort -k 11,11V -k 12,12n >${SampleID}_finalhighquality_four.txt
-# perl -ne '{chomp; my ($Rcount,$quality)=(split/\t/,$_)[8,9]; next unless ($Rcount>1 && $quality>=25|| $Rcount eq "TotalCoverage"); print "$_\n"}' ${SampleID}_estimated.final.txt |sort -k 11,11V -k 12,12n >${SampleID}_finalhighquality_estimated.txt
-# perl -ne '{chomp;if ($_=~/>(\S+)/) {$_=~s/^>//;my ($id,$rc,$qual)=split/\t/,$_; print "UnMapped\t$id\t$rc\t$qual\t"}else{my $length= length ($_) - 90 ; print "$length\t$_\n"}}' ${SampleID}_unmappable.fasta >${SampleID}_unmappable.txt
-#
-#
-#
-# perl -ne '{chomp; my ($type,$Rcount,$quality,$feature)=(split/\t/,$_)[6,8,9,14]; if ($feature =~/^gene/){$type="2orMore"} }'
-#
-
+perl -ne '{chomp; $n++; my @array=split/\t/,$_; if ($array[7] eq "Unknown"){$array[6] = "1orMore"; $array[0]="U$n"; my $string=join "\t",@array; print "$string\n"}else{$array[0]=~s/Tw/M/g; $array[0]=~s/Th/M/g; $array[0] =~s/Si/M/g;$array[0] =~s/E/M/g;my $string=join "\t",@array; print "$string\n"}}' ${SampleID}_final.Multiple.txt >${in}/${SampleID}/FinalLargeInsertion/${SampleID}_final.Multiple.txt
+perl -ne '{chomp; $n++; my @array=split/\t/,$_; if($n==1){print "$_\n"}else{$m=$n-1;$array[0]="S$m";my $string=join "\t",@array;print "$string\n"}}' ${SampleID}_final.Single.txt >${in}/${SampleID}/FinalLargeInsertion/${SampleID}_final.Single.txt
 
 date
 
