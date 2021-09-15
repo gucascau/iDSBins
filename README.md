@@ -44,12 +44,12 @@ Perl is used to run the scripts. The following softwares are also required:
 Usage: sh Final_intergrated.sh [-a SampleID] [-b Working Directory] [-c Forward Index] [-d Reverse Index] [-f forward Reads] [-r Reverse Reads] [-p Software Installed Directory] [options]
 		 
 Request Parameters:
-	-a Sample Id (Example: yYY398-B_S10)
+	-a Sample Id (Example: Test)
 	-b The working directory, where the raw read stored and we perform the analyses of the large insertion
 	-c Index of forward reads(Example: CTC)
 	-d Index of reverse reads (Example: ACC)
-	-f forward reads (Example: SampleID_L001_R1_001.fastq)
-	-r reverse reads (Example: SampleID_L001_R2_001.fastq)
+	-f Forward reads (Example: Test_L001_R1_001.fastq)
+	-r Reverse reads (Example: Test_L001_R2_001.fastq)
 	-p Software installed Path, Attation: This required to install DSBins, BLAST, PEAR, Bedtools in the same folder (Default:"")
 
 Optional Parameters:
