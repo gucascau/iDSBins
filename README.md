@@ -24,13 +24,11 @@ This repository contain a set of simple scripts that carry out the key anaylses 
 
 Perl is used to run the scripts. The following softwares are also required:
 
-. blast (https://blast.ncbi.nlm.nih.gov/Blast.cgi?CMD=Web&PAGE_TYPE=BlastDocs&DOC_TYPE=Download)
+. blast (ncbi-blast-2.8.1+)(https://blast.ncbi.nlm.nih.gov/Blast.cgi?CMD=Web&PAGE_TYPE=BlastDocs&DOC_TYPE=Download)
 
-. bbduk (https://jgi.doe.gov/data-and-tools/bbtools/bb-tools-user-guide/bbduk-guide/)
+. pear (pear-0.9.11) (https://cme.h-its.org/exelixis/web/software/pear/doc.html)
 
-. pear (https://cme.h-its.org/exelixis/web/software/pear/doc.html)
-
-. bedtools (https://bedtools.readthedocs.io/en/latest/)
+. bedtools (bedtools-2.25.0) (https://bedtools.readthedocs.io/en/latest/)
 
 # Install
 
