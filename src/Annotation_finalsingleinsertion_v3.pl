@@ -1,10 +1,4 @@
 #!/usr/bin/perl
-#author:wangxin
-### #### caluculate the side effect on the final associated genes results
-### Here is to calculate the sample size effect
-
-
-#!/usr/bin/perl
 use strict;
 use warnings;
 my $version="1.0 version";
@@ -13,10 +7,10 @@ use Getopt::Long;
 #Author:Xin Wang 
 #email: xin.wang@childrens.harvard.edu
 #PI: Kaifu Chen
+### #### caluculate the side effect on the final associated genes results
+### Here is to calculate the sample size effect
 
 ### This script is to generate the large insertion table and bedfile for further annotation
-
-
 my %opts;
 GetOptions(\%opts,"i:s","o:s","g:s","q:s","t:s","h:s","e:s","d:s");
 print "*************\n*$version*\n*************\n";
