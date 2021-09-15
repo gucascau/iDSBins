@@ -197,12 +197,12 @@ done
 
 # defualt script path
 
-srcDir=${softpath}/DSBins/src
+srcDir=${softpath}/iDSBins/src
 # default genome sequence
-genomeseq=${softpath}/DSBins/Database/saccharomyces_cerevisiae_R64-2-1_20150113_modified.fsa
+genomeseq=${softpath}/iDSBins/Database/saccharomyces_cerevisiae_R64-2-1_20150113_modified.fsa
 
 # default genome annotation
-genomeann=${softpath}/DSBins/Database/saccharomyces_cerevisiae_R64-2-1_20150113_version6.bed
+genomeann=${softpath}/iDSBins/Database/saccharomyces_cerevisiae_R64-2-1_20150113_version6.bed
 
 # Print helpFunction in case parameters are empty
 if [ -z "${SampleID}" ] 
