@@ -45,6 +45,9 @@ Perl is used to run the scripts. The following softwares are also required:
 ```
 Usage: sh Final_intergrated.sh -a Sample ID -b Work Directory -c Forward Index -d Reverse Index -f forward reads -r reverse reads -p Software installed Directory
 
+[-a SampleID] [-b Working Directory] [-c Forward Index] [-d Reverse Index] [-f forward Reads]
+                 [-r Reverse Reads] [-p Software Installed Directory] 
+		 
 Request Parameters:
 	-a Sample Id (Example: yYY398-B_S10)
 	-b The working directory, where the raw read stored and we perform the analyses of the large insertion
