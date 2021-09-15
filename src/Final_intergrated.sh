@@ -605,7 +605,7 @@ echo "Perform annotation of each categories of large insertions"
 ### For assembled: Blast aginst all assembled (First step using the default blast)
 cd ../
 
-#${softpath}/ncbi-blast-2.8.1+/bin/blastn -query ${SampleID}_detected_assemblysep.Insassembled.fasta -out ${SampleID}_detected_assemblysep.Insassembled.blast_all_detected.tbl -db /home/ch220812/database/YeastGenomeIndex/S288C/S288C_reference_genome_R64-2-1_20150113/modified/saccharomyces_cerevisiae_R64-2-1_20150113_modified.fsa -num_threads 15  -outfmt '6 qseqid sseqid pident length mismatch gapopen qstart qend qlen sstart send slen bitscore evalue' 
+#${softpath}/ncbi-blast-2.8.1+/bin/blastn -query ${SampleID}_detected_assemblysep.Insassembled.fasta -out ${SampleID}_detected_assemblysep.Insassembled.blast_all_detected.tbl -db ${genomeseq} -num_threads 15  -outfmt '6 qseqid sseqid pident length mismatch gapopen qstart qend qlen sstart send slen bitscore evalue' 
 
 ### integrate the default blast and the unaligned blast (shorter parameter):
 cat ${SampleID}_detected_number.noaligned.blast.tbl ${SampleID}_detected_assemblysep.Insassembled.blast_all_detected.tbl >${SampleID}_detected_assemblysep.Insassembled.FinallyBlast.tbl
@@ -636,11 +636,11 @@ perl ${srcDir}/Annotation_withupdownstream_insertion_For4donors_v3.pl -a ${Sampl
 
 cd ${SampleID}_unassembledEstimate
 
-perl ${srcDir}/Change_ID_fordeduplicatedestmateone_insertion_tobedsequence_versionOct_v3.pl -g /home/ch220812/database/YeastGenomeIndex/S288C/S288C_reference_genome_R64-2-1_20150113/modified/saccharomyces_cerevisiae_R64-2-1_20150113_modified.fsa -m ${SampleID}_unassembledEstimate.Ainsertion.R1.fastq -n ${SampleID}_unassembledEstimate.Ainsertion.R2.fastq -f ${SampleID}_detected_second_estimated.uniq.txt -t ${SampleID} -o ${SampleID}_estimated
+perl ${srcDir}/Change_ID_fordeduplicatedestmateone_insertion_tobedsequence_versionOct_v3.pl -g ${genomeseq} -m ${SampleID}_unassembledEstimate.Ainsertion.R1.fastq -n ${SampleID}_unassembledEstimate.Ainsertion.R2.fastq -f ${SampleID}_detected_second_estimated.uniq.txt -t ${SampleID} -o ${SampleID}_estimated
 
 ### double check whether they do have alternative feature
 
-${softpath}/ncbi-blast-2.8.1+/bin/blastn -query ${SampleID}_estimated.wholeseq.fasta -out ${SampleID}_estimated.wholeseq.blast -db /home/ch220812/database/YeastGenomeIndex/S288C/S288C_reference_genome_R64-2-1_20150113/modified/saccharomyces_cerevisiae_R64-2-1_20150113_modified.fsa -num_threads 15  -outfmt '6 qseqid sseqid pident length mismatch gapopen qstart qend qlen sstart send slen bitscore evalue'
+${softpath}/ncbi-blast-2.8.1+/bin/blastn -query ${SampleID}_estimated.wholeseq.fasta -out ${SampleID}_estimated.wholeseq.blast -db ${genomeseq} -num_threads 15  -outfmt '6 qseqid sseqid pident length mismatch gapopen qstart qend qlen sstart send slen bitscore evalue'
 
 
 ### Annotate the estimated insertion.
