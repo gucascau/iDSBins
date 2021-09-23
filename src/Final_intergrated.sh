@@ -537,7 +537,7 @@ cat ${SampleID}_detected_number.twoinf.txt ${SampleID}_detected_number.noaligned
 
 perl ${srcDir}/Two_confident_donor_coverage_deduplication_universal_v4.pl -i ${SampleID}_detected_second_twoassembly.txt -a ${IDonorGap} -b ${CDonorGap} -q ${in}/${SampleID}/QualityControl/${SampleID}_QC.Allquality.stat -o ${SampleID}_detected_second_twoassembly
 
-.
+
 ### 3. Three donor insertion
 cat ${SampleID}_detected_number.threeinf.txt ${SampleID}_detected_number.noaligned.threeinf.txt >${SampleID}_detected_second_threeassembly.txt
 perl ${srcDir}/Three_confident_donor_coverage_deduplication_universal_v4.pl -i ${SampleID}_detected_second_threeassembly.txt -a ${IDonorGap} -b ${CDonorGap} -q ${in}/${SampleID}/QualityControl/${SampleID}_QC.Allquality.stat -o ${SampleID}_detected_second_threeassembly
@@ -737,8 +737,8 @@ perl ${srcDir}/FinalInsertionQualityControl.pl  -g ${SampleID}_final.cls -i ${Sa
  
 cd ${in}/${SampleID}/FinalInsertion/
 
-### you can use head 20 to track the ID
-sort -k 7nr ${in}/${SampleID}/DeDuplication/DeduplicationFirst/${SampleID}_detected_combined.highqual2.txt |head -n 100 
+### you can use head 20 to track the ID print the top 20 
+sort -k 7nr ${in}/${SampleID}/DeDuplication/DeduplicationFirst/${SampleID}_detected_combined.highqual2.txt |head -n 20 
  
  
 date
