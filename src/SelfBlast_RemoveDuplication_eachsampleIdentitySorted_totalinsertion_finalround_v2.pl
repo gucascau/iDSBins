@@ -6,8 +6,11 @@ use warnings;
 #email: xin.wang@childrens.harvard.edu
 #PI: Kaifu Chen
 
-### function: This script is to extract the potential elimanated insertions and added the removed insertion coverage into previous insertions
-### The script is based on the previous self treatment 
+### function: This script is to extract the potential eliminated insertions and added the removed insertion coverage into previous insertions
+### The criterion of the script is as follows,
+###   1. we considered the short insertions (short 50bp, 150 bp in total) have a high strandard for final deduplications as they have less sequence errors, 95% identity, 95% Coverage, less than 6 gapsize and less than 6 mismatches as previously showed (no need to set up as before).
+
+###  2 for the longer insertions that happened very few, we set up less stringent due to high sequence errors. The main setup is the matches/ read length >0.95, identity >80%, wherease we ignore the gapsize, mismatches. These parameter is adjustable if we try to have a high standard.
 
 
 
@@ -27,8 +30,9 @@ if (!defined $opts{f} ||!defined $opts{o} ||!defined $opts{i}||!defined $opts{b}
 	-f Inserted fasta (The final fasta with insertion events)
 	-o The final results strings of files, including the final forward/reverse deduplicated reads, final clustering file with statistical resutls and their representive read
 	
-	Optional Parameters:
-	-t Identity of two reads (default 90)
+	Optional Parameters for long insertion because of the low quality within sequence length
+	-r Cut off whole long insertions because of the read length(default 300)
+	-t Identity of two reads (default 80)
 	-g Shift size (default 6)
 	-c Coverage (Matched size/Full length, default 95%)
 	-h Help
@@ -40,16 +44,19 @@ if (!defined $opts{f} ||!defined $opts{o} ||!defined $opts{i}||!defined $opts{b}
 ########################################################################################
 #### The first step to generate a unique cluster results from the self blast results
 
-#### Criterion : Identity more than 95%, less than 6 mismatches and 2 gapsize, two reads coverage more than 95%
+#### Criterion : Identity more than 90%, less than , two reads coverage more than 95% for short insertions as previous 
+
 ########################################################################################
 
 my $blast=$opts{b};
 
-my $ident=(defined $opts{t})?$opts{t}:90;
+my $ident=(defined $opts{t})?$opts{t}:80;
 my $cover=(defined $opts{c})?$opts{c}:0.95;
 #my $mismatches = (defined $opts{m})?$opts{m}:10;
 my $shiftsize=(defined $opts{g})?$opts{g}:6;
 my $output=$opts{o};
+my $Lengthcutoff=(defined $opts{r})?$opts{r}:300;
+
 
 my %remove; my %con; my %contain; my %hash; my %name; my $n=0;
 
@@ -59,15 +66,18 @@ while (<BLAST>){
 	my ($id1,$id2,$qidentity,$qmatches,$qmismatches,$qgapsize,$qlenth,$rlength)=(split/\t/,$_)[0,1,2,3,4,5,8,11];
 	next if ($id1 eq $id2);
 	my $av=$qmatches/$qlenth;
-	
+	my $av2=$qmatches/$rlength;
+	my $maxindel=0.15*$qlenth;
 	
 	### considering the begining of high quality at the upstream, here we restricted the shorter insertion events with high standard:
  
-	### we ignore the dramatic sequence error but require the difference of overall alignments and size difference 5bp
-	if ($qlenth<150 && $rlength<150 ){	
-		next unless ($av>=0.95 && $qidentity >=95 && abs($qlenth-$rlength) <=2);		
+	### we ignore the dramatic sequence error but require the difference of overall alignments 
+	if ($qlenth<$Lengthcutoff && $rlength<$Lengthcutoff ){
+		
+		next unless ($av>=0.95 && $av2>=0.95 && $qidentity >=90 && $qmismatches<=$maxindel && $qgapsize<=$maxindel);
+
 	}else{
-		next unless ($av>=$cover && $qidentity >=$ident && abs($qlenth-$rlength) <=$shiftsize);
+		next unless ($av>=$cover && $av2>=$cover && $qidentity >=$ident && abs($qlenth-$rlength) <=$shiftsize && $qmismatches<=$maxindel && $qgapsize<=$maxindel );
 	}
 	
 	# next unless ($av>=$cover && $qidentity >=$ident && abs($qlenth-$rlength) <=$shiftsize);

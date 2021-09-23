@@ -50,7 +50,7 @@ while (<FASTQ1>) {
     if ($. % 4 == 1)  {
 		$id1=(split/\s+/,$_)[0];
 		$id1=~s/^@//;
-		print "$id1\n";
+		#print "$id1\n";
 		$hash1{$id1}=$_."\n";
 	}elsif($.%4 == 2){
 		$string1{$id1}=$_;

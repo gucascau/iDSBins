@@ -26,8 +26,8 @@ helpFunction()
 	echo -e "Request Parameters:"
 	echo -e "\t-a Sample Id (Example: yYY398-B_S10)"
 	echo -e "\t-b The working directory, where the raw read stored and we perform the analyses of the large insertion"
-	echo -e "\t-c Index of forward reads(Example: CTC)"
-	echo -e "\t-d Index of reverse reads (Example: ACC)"
+	echo -e "\t-c Index of forward reads(Example: CAG)"
+	echo -e "\t-d Index of reverse reads (Example: ATC)"
 	echo -e "\t-f forward reads (Example: SampleID_L001_R1_001.fastq)"
 	echo -e "\t-r reverse reads (Example: SampleID_L001_R2_001.fastq)"
 	echo -e "\t-p Software installed Path, Attation: This required to install DSBins, BLAST, PEAR, Bedtools in the same folder (Default:"")" 
@@ -537,6 +537,7 @@ cat ${SampleID}_detected_number.twoinf.txt ${SampleID}_detected_number.noaligned
 
 perl ${srcDir}/Two_confident_donor_coverage_deduplication_universal_v4.pl -i ${SampleID}_detected_second_twoassembly.txt -a ${IDonorGap} -b ${CDonorGap} -q ${in}/${SampleID}/QualityControl/${SampleID}_QC.Allquality.stat -o ${SampleID}_detected_second_twoassembly
 
+.
 ### 3. Three donor insertion
 cat ${SampleID}_detected_number.threeinf.txt ${SampleID}_detected_number.noaligned.threeinf.txt >${SampleID}_detected_second_threeassembly.txt
 perl ${srcDir}/Three_confident_donor_coverage_deduplication_universal_v4.pl -i ${SampleID}_detected_second_threeassembly.txt -a ${IDonorGap} -b ${CDonorGap} -q ${in}/${SampleID}/QualityControl/${SampleID}_QC.Allquality.stat -o ${SampleID}_detected_second_threeassembly
@@ -605,7 +606,7 @@ echo "Perform annotation of each categories of large insertions"
 ### For assembled: Blast aginst all assembled (First step using the default blast)
 cd ../
 
-#${softpath}/ncbi-blast-2.8.1+/bin/blastn -query ${SampleID}_detected_assemblysep.Insassembled.fasta -out ${SampleID}_detected_assemblysep.Insassembled.blast_all_detected.tbl -db ${genomeseq} -num_threads 15  -outfmt '6 qseqid sseqid pident length mismatch gapopen qstart qend qlen sstart send slen bitscore evalue' 
+#${softpath}/ncbi-blast-2.8.1+/bin/blastn -query ${SampleID}_detected_assemblysep.Insassembled.fasta -out ${SampleID}_detected_assemblysep.Insassembled.blast_all_detected.tbl -db /home/ch220812/database/YeastGenomeIndex/S288C/S288C_reference_genome_R64-2-1_20150113/modified/saccharomyces_cerevisiae_R64-2-1_20150113_modified.fsa -num_threads 15  -outfmt '6 qseqid sseqid pident length mismatch gapopen qstart qend qlen sstart send slen bitscore evalue' 
 
 ### integrate the default blast and the unaligned blast (shorter parameter):
 cat ${SampleID}_detected_number.noaligned.blast.tbl ${SampleID}_detected_assemblysep.Insassembled.blast_all_detected.tbl >${SampleID}_detected_assemblysep.Insassembled.FinallyBlast.tbl
@@ -636,11 +637,11 @@ perl ${srcDir}/Annotation_withupdownstream_insertion_For4donors_v3.pl -a ${Sampl
 
 cd ${SampleID}_unassembledEstimate
 
-perl ${srcDir}/Change_ID_fordeduplicatedestmateone_insertion_tobedsequence_versionOct_v3.pl -g ${genomeseq} -m ${SampleID}_unassembledEstimate.Ainsertion.R1.fastq -n ${SampleID}_unassembledEstimate.Ainsertion.R2.fastq -f ${SampleID}_detected_second_estimated.uniq.txt -t ${SampleID} -o ${SampleID}_estimated
+perl ${srcDir}/Change_ID_fordeduplicatedestmateone_insertion_tobedsequence_versionOct_v3.pl -g /home/ch220812/database/YeastGenomeIndex/S288C/S288C_reference_genome_R64-2-1_20150113/modified/saccharomyces_cerevisiae_R64-2-1_20150113_modified.fsa -m ${SampleID}_unassembledEstimate.Ainsertion.R1.fastq -n ${SampleID}_unassembledEstimate.Ainsertion.R2.fastq -f ${SampleID}_detected_second_estimated.uniq.txt -t ${SampleID} -o ${SampleID}_estimated
 
 ### double check whether they do have alternative feature
 
-${softpath}/ncbi-blast-2.8.1+/bin/blastn -query ${SampleID}_estimated.wholeseq.fasta -out ${SampleID}_estimated.wholeseq.blast -db ${genomeseq} -num_threads 15  -outfmt '6 qseqid sseqid pident length mismatch gapopen qstart qend qlen sstart send slen bitscore evalue'
+${softpath}/ncbi-blast-2.8.1+/bin/blastn -query ${SampleID}_estimated.wholeseq.fasta -out ${SampleID}_estimated.wholeseq.blast -db /home/ch220812/database/YeastGenomeIndex/S288C/S288C_reference_genome_R64-2-1_20150113/modified/saccharomyces_cerevisiae_R64-2-1_20150113_modified.fsa -num_threads 15  -outfmt '6 qseqid sseqid pident length mismatch gapopen qstart qend qlen sstart send slen bitscore evalue'
 
 
 ### Annotate the estimated insertion.
@@ -686,8 +687,13 @@ cat ${SampleID}_mappable.fasta ${SampleID}_unmappable.fasta >${SampleID}_all.fas
 
 ${softpath}/ncbi-blast-2.8.1+/bin/makeblastdb  -in ${SampleID}_all.fasta -dbtype nucl
 ${softpath}/ncbi-blast-2.8.1+/bin/blastn -query  ${SampleID}_all.fasta -db ${SampleID}_all.fasta -out ${SampleID}_all.blast -num_threads 15  -outfmt '6 qseqid sseqid pident length mismatch gapopen qstart qend qlen sstart send slen bitscore evalue'
-#
- perl ${srcDir}/SelfBlast_RemoveDuplication_eachsampleIdentitySorted_totalinsertion_finalround_v2.pl -b ${SampleID}_all.blast  -i ${SampleID}_mappable.txt -f ${SampleID}_all.fasta -o ${SampleID}_final
+
+#### For the final round deduplication, we briefly adapt self-blast strategy to remove these duplicates. Considering the fact that the longer the reads are, the lower quality the reads will be. MiSeq read length is 300bp, error rate can be as high as 20%. Therefore, we specifically required a loose standard for long insertion deduplicates, the other short still used the same parameters. Regarding the long insertion events, we removed long insertions low-coverage duplicates that are with similar length (difference <=5), high identity (>80%), less mismatches/indels (<= 15% insertion length). 
+
+perl ${srcDir}/SelfBlast_RemoveDuplication_eachsampleIdentitySorted_totalinsertion_finalround_v2.pl -b ${SampleID}_all.blast  -i ${SampleID}_mappable.txt -f ${SampleID}_all.fasta -o ${SampleID}_final
+
+
+# perl ${srcDir}/SelfBlast_RemoveDuplication_eachsampleIdentitySorted_totalinsertion_finalround_v2.pl -b ${SampleID}_all.blast  -i ${SampleID}_mappable.txt -f ${SampleID}_all.fasta -o ${SampleID}_final
 #
 # #### Here we ignored the mismatches as long as the sequence identity
 #
@@ -697,35 +703,44 @@ ${softpath}/ncbi-blast-2.8.1+/bin/blastn -query  ${SampleID}_all.fasta -db ${Sam
 # perl /temp_work/ch220812/Project/script/DSBinsertion/Version_Jan27/SelfBlast_RemoveDuplication_eachsample.pl -i ${SampleID}_all.potential.txt -g ${SampleID}_all.fasta -o ${SampleID}_all.afterdup.txt
 #
 
-### here due to the incomplet read count number, we change the read count based on the ${SampleID}_final.cls number
+##### Updated version #####  srcDir=/lab-share/Cardio-Chen-e2/Public/xwang/tmhxxw9/tmhxxw9/project/Aging/Updated_V0903/UsedMutants/TestSoftWare/Software/iDSBins/src
 
+############################################
+# Generate final round of table
+############################################
 perl ${srcDir}/FinalInsertionQualityControl.pl  -g ${SampleID}_final.cls -i ${SampleID}_final.finalinsertion.txt -o ${SampleID}_final.finalinsertion.highquality
+ 
+ awk 'NR==1; NR > 1 {print $0 | "sort  -k 11,11V -k 12,12n -k 13,13n"}' ${SampleID}_final.finalinsertion.highquality.One.txt|perl -ne '{chomp; my ($chr,$start,$end)=(split/\t/,$_)[10,11,12]; my $up; my $down;if (exists $hash{$chr}){$up=$start-$start0; $down=$end-$end0}else{$up=$start; $down=$end} print "$_\t$up\t$down\n"; $start0=$start; $end0=$end; $hash{$chr}++;}' >${SampleID}_final_One_updated.txt
+ awk 'NR==1; NR > 1 {print $0 | "sort  -k 11,11V -k 12,12n -k 13,13n"}' ${SampleID}_final.finalinsertion.highquality.Multiple.txt  |perl -ne '{chomp; my ($chr,$start,$end)=(split/\t/,$_)[10,11,12];if ($start eq "Unknown" || $start  eq "NO"){print "$_\tUnknown\tUnknown\n"; next}; my $up; my $down;if (exists $hash{$chr}){$up=$start-$start0; $down=$end-$end0}else{$up=$start; $down=$end} print "$_\t$up\t$down\n"; $start0=$start; $end0=$end; $hash{$chr}++;}'  >${SampleID}_final_Multiple_updated.txt
+ 
+ #### Then genetate the final result by removin the duplicates that have 0-10 bp shift and low coverage, and add the new read count number
+ mkdir -p ${in}/${SampleID}/FinalInsertion
+ ## for sinlge donor: 
+ perl ${srcDir}/CorrectedSingleBasedOnUpdistDowndist.pl -i ${SampleID}_final_One_updated.txt -o ${SampleID}_final_One_updated
+ awk 'NR==1; NR > 1 {print $0 | "sort  -k 11,11V -k 12,12n"}' ${SampleID}_final_One_updated.OneCorrected.txt | perl -ne '{chomp; $n++; my @array=split/\t/,$_; if($n==1){print "$_\n"}else{$m=$n-1;$array[0]="S$m";my $string=join "\t",@array;print "$string\n"}}' >${in}/${SampleID}/FinalInsertion/${SampleID}_final.sinlge.txt
+ 
+ ## for multiple donor
+ 
+ perl ${srcDir}/FinalMutipleInsertionSortUpdate.pl -i ${SampleID}_final_Multiple_updated.txt -o ${SampleID}_final_Multiple_updated.MuCorrected.txt
+ 
+ ## Change ID
+  perl -ne '{chomp; my @array=split/\t/,$_; if ($array[0] eq "CaseID"){print "$_\n"; next;}; my $string; if ($array[7] eq "Unknown"){$array[6] = "1orMore";} if (!exists $hash{$array[1]}){$n++;$array[0]="M$n"; $string=join "\t",@array; }else{my ($i,$m)=split/\./,$array[0]; $array[0]="M$n.$m"; $string=join "\t",@array}; print "$string\n"; $hash{$array[1]}++; }' ${SampleID}_final_Multiple_updated.MuCorrected.txt >${SampleID}_final.multiple.txt
+ 
+ 
+ cp ${SampleID}_final.multiple.txt ${in}/${SampleID}/FinalInsertion/${SampleID}_final.multiple.txt
 
+ ############################################
+ # Double check the most abundance reads 
+ #  and our final insertion events. 
+ #      Here we can track reads ID.
+ ############################################
+ 
+cd ${in}/${SampleID}/FinalInsertion/
 
-### sort the final results for better visualization
-awk 'NR==1; NR > 1 {print $0 | "sort  -k 11,11V -k 12,12n"}'  ${SampleID}_final.finalinsertion.highquality.One.txt >${SampleID}_final.finalinsertion.highquality.One.sorted.txt
-
-##
-perl ${srcDir}/FinalMutipleInsertionSort.pl -i ${SampleID}_final.finalinsertion.highquality.Multiple.txt -o ${SampleID}_final.finalinsertion.highquality.Multiple.sorted.txt
-
-cp ${SampleID}_final.finalinsertion.highquality.Multiple.sorted.txt ${SampleID}_final.Multiple.txt
-cp ${SampleID}_final.finalinsertion.highquality.One.sorted.txt ${SampleID}_final.Single.txt
-
-
-## Update based on the requirement from Kaifu, This part is going to update when we obtain the feedback from Yang. 
-#
-# for i in *.txt; do sed 's/Genotype/SampleID/' -i ${SampleID}; done;
-# for i in *.txt; do sed 's/EstimatedOrAssembly/GapOfReads(3kb)/' -i  ${SampleID}; done;
-# for i in *.txt; do sed 's/EstimatedInsertion/YES/g' -i  ${SampleID}; done;
-# for i in *.txt; do sed 's/AssemblyInsertion/NO/g' -i  ${SampleID}; done;
-
-
-mkdir ${in}/${SampleID}/FinalLargeInsertion
-
-
-perl -ne '{chomp; $n++; my @array=split/\t/,$_; if ($array[7] eq "Unknown"){$array[6] = "1orMore"; $array[0]="U$n"; my $string=join "\t",@array; print "$string\n"}else{$array[0]=~s/Tw/M/g; $array[0]=~s/Th/M/g; $array[0] =~s/Si/M/g;$array[0] =~s/E/M/g;my $string=join "\t",@array; print "$string\n"}}' ${SampleID}_final.Multiple.txt >${in}/${SampleID}/FinalLargeInsertion/${SampleID}_final.Multiple.txt
-perl -ne '{chomp; $n++; my @array=split/\t/,$_; if($n==1){print "$_\n"}else{$m=$n-1;$array[0]="S$m";my $string=join "\t",@array;print "$string\n"}}' ${SampleID}_final.Single.txt >${in}/${SampleID}/FinalLargeInsertion/${SampleID}_final.Single.txt
-
+### you can use head 20 to track the ID
+sort -k 7nr ${in}/${SampleID}/DeDuplication/DeduplicationFirst/${SampleID}_detected_combined.highqual2.txt |head -n 100 
+ 
+ 
 date
 
 echo "Congratulation! Insertion detection and deduplication job array is finished !"
