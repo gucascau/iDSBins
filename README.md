@@ -119,7 +119,7 @@ The software will generate two seperate files for large insertion events, includ
 | 18th | Alternative Feature |
 | 19th | Junction sequence at 5' |
 | 20th | Junction sequence at 3'|
-| 21th | Whethe estimated insertion based on gap Of reads status(3kb) |
+| 21th | Whethe estimated insertion based on gap Of reads status (3kb) |
 | 22th | Start distance between neighbor insertions|
 | 23th | End distance between neighbor insertions |
 
