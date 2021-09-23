@@ -120,6 +120,8 @@ The software will generate two seperate files for large insertion events, includ
 | 19th | Junction sequence at 5' |
 | 20th | Junction sequence at 3'|
 | 21th | Gap Of Reads Status(3kb) |
+| 22th | Start distance between neighbor insertions|
+| 23th | End distance between neighbor insertions |
 
 For each insertion event, we selected the most reliable representative read that showed the highest read quality, highest donor identity and the highest read count support. 
 
