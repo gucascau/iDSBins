@@ -44,7 +44,7 @@ my $request=$opts{i};
 
 
 open REQ,"$request" or die $!;
-my %hash; my $length0; my $id0; my $counts0; 
+my %hash; my $length0=0; my $id0; my $counts0; 
 #my %finaltype; 
 my %finalstring; my %finalnum;
 my $output=$opts{o}; my %delete;
