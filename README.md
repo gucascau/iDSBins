@@ -18,6 +18,8 @@ This repository contain a set of simple scripts that carry out the key anaylses 
 3. Determine the donor number of large insertion events.
 4. Functionally annotate the inserted donors.
 5. Identify the hotspots of large insertions.
+6. Measure the distance to the closest genomic feature.
+7. Extract the junction flanking sequence (50bp) of donor.
 
 
 # Dependencies
