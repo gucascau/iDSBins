@@ -128,6 +128,9 @@ The software will generate two seperate files for large insertion events, includ
 | 22th | Start distance between neighbor insertions|
 | 23th | End distance between neighbor insertions |
 
+
+
+
 For each insertion event, we selected the most reliable representative read that showed the highest read quality, highest donor identity and the highest read count support. 
 
 For more detail information, please feel free to contact: xin.wang@childrens.harvard.edu
