@@ -134,3 +134,7 @@ The software will generate two seperate files for large insertion events, includ
 For each insertion event, we selected the most reliable representative read that showed the highest read quality, highest donor identity and the highest read count support. 
 
 For more detail information, please feel free to contact: xin.wang@childrens.harvard.edu
+
+Copyright (c) 2023 Dr. Kaifu Chen lab
+
+Current version v1.0
