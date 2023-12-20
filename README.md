@@ -135,6 +135,8 @@ For each insertion event, we selected the most reliable representative read that
 
 For more detail information, please feel free to contact: xin.wang@childrens.harvard.edu
 
+This project is licensed under the terms of the MIT license.
+
 Copyright (c) 2023 Dr. Kaifu Chen lab
 
 Current version v1.0
