@@ -109,7 +109,7 @@ Mataend=294500
 # default minimum MAT region read quality
 Mqmin=25
 # default minimum Inserted region read quality
-Iqmin=25
+Iqmin=15
 # default minimum insertion length
 Ilength=10
 
