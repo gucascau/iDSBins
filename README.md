@@ -133,6 +133,8 @@ The software will generate two seperate files for large insertion events, includ
 Yu, Y._#_, Wang, X._#_, Fox, J._#_, et al. **Yeast EndoG prevents genome instability by degrading extranuclear DNA species**. _Nat Commun_ 15, 7653 (2024). https://doi.org/10.1038/s41467-024-52147-2
 
 
+# Details
+
 For each insertion event, we selected the most reliable representative read that showed the highest read quality, highest donor identity and the highest read count support. 
 
 For more detail information, please feel free to contact: xin.wang@childrens.harvard.edu
