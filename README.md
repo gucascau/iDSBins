@@ -130,7 +130,7 @@ The software will generate two seperate files for large insertion events, includ
 | 23th | End distance between neighbor insertions |
 
 # Citation
-Yu, Y._#_, Wang, X_#_., Fox, J._#_ et al. Yeast EndoG prevents genome instability by degrading extranuclear DNA species. Nat Commun 15, 7653 (2024). https://doi.org/10.1038/s41467-024-52147-2
+Yu, Y._#_, Wang, X._#_, Fox, J._#_, et al. Yeast EndoG prevents genome instability by degrading extranuclear DNA species. Nat Commun 15, 7653 (2024). https://doi.org/10.1038/s41467-024-52147-2
 
 
 For each insertion event, we selected the most reliable representative read that showed the highest read quality, highest donor identity and the highest read count support. 
