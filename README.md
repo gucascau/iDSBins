@@ -130,9 +130,9 @@ The software will generate two seperate files for large insertion events, includ
 | 23th | End distance between neighbor insertions |
 
 # Citation
-Yu, Y._#_, Wang, X._#_, Fox, J._#_, Yu, R., Thakre, P., Nikoloutsos, N., Yu, Y., Li, Q., Hastings P.J., Dang, W., Chen, K*, Ira, G*. **Yeast EndoG prevents genome instability by degrading extranuclear DNA species**. _Nat Commun_ 15, 7653 (2024). https://doi.org/10.1038/s41467-024-52147-2
+_Yu, Y.#, Wang, X.#, Fox, J.#, Yu, R., Thakre, P., Nikoloutsos, N., Yu, Y., Li, Q., Hastings P.J., Dang, W., Chen, K*, Ira, G*_. **Yeast EndoG prevents genome instability by degrading extranuclear DNA species**. _Nat Commun_ 15, 7653 (2024). https://doi.org/10.1038/s41467-024-52147-2
 
-
+_Yu, Y.#*, Wang, X.#, Fox, J., Li, Q., Yu, Y., Hastings, P.J., Chen, K.* and Ira, G*._ **RPA and Rad27 limit templated and inverted insertions at DNA breaks**. _Nucleic Acids Research_(2024).  https://doi.org/10.1093/nar/gkae1159
 
 # Contact
 
